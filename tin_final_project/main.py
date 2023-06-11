@@ -48,6 +48,30 @@ def test_off():
         return 0
 
 
+def test_wrong_relay():
+    print("Test #3 - Setting wrong relay")
+    frame = "t70230" + str(9) + "0000\r"
+    my_serial.write(frame.encode(encoding='UTF-8'))
+    sleep(DELAY)
+    my_serial.readline().decode(encoding='UTF-8').strip()
+    sleep(DELAY)
+    s = my_serial.readline().decode(encoding='UTF-8').strip()
+    if(s[0:7] == "t301104"):
+        return 1
+    return 0
+
+def test_wrong_state():
+    print("Test #4 - Setting wrong relay state")
+    frame = "t7023000" + "5" + "00\r"
+    my_serial.write(frame.encode(encoding='UTF-8'))
+    sleep(DELAY)
+    my_serial.readline().decode(encoding='UTF-8').strip()
+    sleep(DELAY)
+    s = my_serial.readline().decode(encoding='UTF-8').strip()
+    if(s[0:7] == "t301105"):
+        return 1
+    return 0
+
 
 init()
 
@@ -63,4 +87,13 @@ while(1):
     else:
         print("Shit's fucked!")
 
+    if(test_wrong_relay()):
+        print("All good!")
+    else:
+        print("Shit's fucked!")
+
+    if(test_wrong_state()):
+        print("All good!")
+    else:
+        print("Shit's fucked!")
 

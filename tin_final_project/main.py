@@ -78,22 +78,22 @@ init()
 while(1):
     input("Press any key to launch tests:")
     if (test_on() == 1):
-        print("All good!")
+        print("Test passed")
     else:
-        print("Shit's fucked!")
+        print("Test failed")
 
     if (test_off() == 1):
-        print("All good!")
+        print("Test passed")
     else:
-        print("Shit's fucked!")
+        print("Test failed")
 
     if(test_wrong_relay()):
-        print("All good!")
+        print("Test passed")
     else:
-        print("Shit's fucked!")
+        print("Test failed")
 
     if(test_wrong_state()):
-        print("All good!")
+        print("Test passed")
     else:
-        print("Shit's fucked!")
+        print("Test failed")
 
